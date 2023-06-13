@@ -1,0 +1,65 @@
+<h1>Our Grocery Store inventory</h1>
+<div>
+    <label>Name:</label>
+    <input type="text" [(ngModel)]="newProduct.name" />
+  </div>
+  <div>
+    <label>Price:</label>
+    <input type="text" [(ngModel)]="newProduct.price">
+  </div>
+  <div>
+    <label>Product ID:</label>
+    <input type="text" [(ngModel)]="newProduct.productId" />
+  </div>
+  <div>
+    <label>Weight:</label>
+    <input type="number" [(ngModel)]="newProduct.weight" />
+  </div>
+  <div>
+    <label>Sale Price:</label>
+    <input type="number" [(ngModel)]="newProduct.salePrice" />
+  </div>
+  <button (click)="addProduct()">Add New Product</button>
+
+
+
+  <h2>Product List</h2>
+  <div class ="product" *ngFor="let item of products" >
+    <p  [ngStyle]= "{'font-size': '20px'}">
+        Name: {{item.name | uppercase}}
+      </p>
+      <p  *ngIf ="item.price">
+        Price: ${{ item.price }}
+      </p>
+      <p id="sales"*ngIf ="item.salePrice">
+        <strong> Sale price: ${{ item.salePrice }}</strong>
+       </p>
+      <p>
+        Product ID: {{ item.productId }}
+      </p>
+      <p>
+        Weight: {{ item.weight }}g
+      </p>
+     
+      <hr>
+  </div>
+  <h2>On sales</h2>
+  <div class ="product" *ngFor="let item of( products | filter ) ">
+    <p  [ngStyle]= "{'font-size': '20px'}">
+        Name: {{item.name | uppercase}}
+      </p>
+      <p  *ngIf ="item.price">
+        Price: ${{ item.price }}
+      </p>
+      <p id="sales"*ngIf ="item.salePrice">
+        <strong> Sale price: ${{ item.salePrice }}</strong>
+       </p>
+      <p>
+        Product ID: {{ item.productId }}
+      </p>
+      <p>
+        Weight: {{ item.weight }}g
+      </p>
+     
+      <hr>
+  </div>
